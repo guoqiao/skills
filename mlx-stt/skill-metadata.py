@@ -7,7 +7,7 @@ metadata = {
   "openclaw": {
     "always": True, # always include the skill (skip other gates)
     "emoji": "🦞", # optional emoji used by the macOS Skills UI
-    "homepage": "https://github.com/Blaizzy/mlx-audio?tab=readme-ov-file#speech-to-text-stt", # optional URL
+    "homepage": "https://github.com/guoqiao/skills/blob/main/mlx-stt/mlx-stt/SKILL.md", # optional URL
     "os": ["darwin"],
     "requires": {
       # each must exist in $PATH
@@ -16,10 +16,10 @@ metadata = {
       ],
       # at list one must exist in $PATH
       "anyBins": [
-        "brew",
-        "uv",
-        "ffmpeg",
-        "mlx_audio.stt.generate",
+        # "brew",
+        # "uv",
+        # "ffmpeg",
+        # "mlx_audio.stt.generate",
       ],
       # env vars must exist or be provided in config
       "env": [
