@@ -21,7 +21,7 @@ bash ${baseDir}/install.sh
 This script will use `brew` to install these cli tools if not available:
 - `ffmpeg`: convert audio format when needed
 - `uv`: install python package and run python script
-- `mlx_audio`: do the real TTS job
+- `mlx_audio`: do the real job
 
 ## Usage
 
