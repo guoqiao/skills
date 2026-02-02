@@ -1,0 +1,40 @@
+loguru
+python-dotenv
+humanize
+
+# datetime
+arrow
+python-dateutil
+
+# cli
+click
+typer
+
+# image
+pillow
+
+# audio
+librosa
+pydub
+soundfile
+
+requests
+httpx
+wget
+playwright
+beautifulsoup4
+markeitdown[all]
+telegramify-markdown
+trafilatura
+yt-dlp[curl-cffi,default]
+
+aiofiles
+aiohttp
+
+websocket-client
+websockets
+
+tiktoken
+openai
+anthropic
+google-genai
