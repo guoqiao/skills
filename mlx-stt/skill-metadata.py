@@ -9,50 +9,63 @@ metadata = {
     "emoji": "🦞", # optional emoji used by the macOS Skills UI
     "homepage": "https://github.com/guoqiao/skills/blob/main/mlx-stt/mlx-stt/SKILL.md", # optional URL
     "os": ["darwin"],
+    "tags": [
+      "latest",
+      "asr", "stt", "speech-to-text", "audio",
+      "glm", "glm-asr", "glm-asr-nano-2512","glm-asr-nano-2512-8bit",
+      "macOS", "MacBook", "Mac mini", "Apple Silicon",
+      "mlx", "mlx-audio",
+    ],
     "requires": {
       # each must exist in $PATH
       "bins": [
         "brew",
       ],
       # at list one must exist in $PATH
-      "anyBins": [
+      # "anyBins": [
         # "brew",
         # "uv",
         # "ffmpeg",
         # "mlx_audio.stt.generate",
-      ],
+      # ],
       # env vars must exist or be provided in config
-      "env": [
-      ],
+      # "env": [
+      # ],
       # list of openclaw.json paths must be true
-      "config": [
-      ]
+      # "config": [
+      # ]
     },
     # env var name associated with skills.entries.<name>.apiKey
     # "primaryEnv": "GEMINI_API_KEY",
     # optional array of installer specs used by the macOS Skills UI
-    "install": [
+    # "install": [
         #"brew",
         #"node",
         #"go",
         #"uv",
         #"download",
-    ]
+    # ]
   }
 }
 
 
+def json_pretty(data):
+    return json.dumps(data, ensure_ascii=False, indent=2)
+
+
+def json_1liner(data):
+  return json.dumps(data, ensure_ascii=False, separators=(',',':'))
+
+
 def main():
-    parser = argparse.ArgumentParser(prog='Agent Skill Metadata Generator')
+    parser = argparse.ArgumentParser(prog='OpenClaw Skill Metadata Generator')
     parser.add_argument('-v', '--verbose', action='store_true')
     args = parser.parse_args()
-    if args.verbose:
-        # generate pretty json for human to check
-        s = json.dumps(metadata, ensure_ascii=False, indent=2)
-    else:
-      # generate 1-liner json to use in SKILL.md as metadata
-        s = json.dumps(metadata, ensure_ascii=False, separators=(',',':'))
-    print(s)
+    tags = metadata['openclaw']['tags']
+    json_fmt = json_pretty if args.verbose else json_1liner
+    print(f"metadata:\n\n{json_fmt(metadata)}\n\n", )
+    print(f"tags:\n\n{','.join(tags)}\n\n")
+
 
 
 if __name__ == "__main__":
