@@ -43,5 +43,5 @@ uv run --script ${baseDir}/hn-extract.py data/item.json
 ## Notes
 - Retries are enabled for HTTP fetches.
 - Comments are indented by thread depth.
-- Article fetch uses `trafilatura.fetch_url` with liberal SSL handling;
+- Article fetch uses `trafilatura.fetch_url` with liberal SSL handling to make it more usable.
 - Sites requires authentication or blocks scraping may still fail.
