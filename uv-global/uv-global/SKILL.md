@@ -1,7 +1,7 @@
 ---
 name: uv-global
 description: Create a global uv environment as python playground or workbench.
-metadata: {"openclaw":{"always":true,"emoji":"🦞","homepage":"https://github.com/guoqiao/skills/blob/main/uv-global/uv-global/SKILL.md","os":["darwin","linux"],"requires":{"anyBins":["brew","uv"]}}}
+metadata: {"openclaw":{"always":true,"emoji":"🦞","homepage":"https://github.com/guoqiao/skills/blob/main/uv-global/uv-global/SKILL.md","os":["darwin","linux"],"tags":["python","uv","global","venv"],"requires":{"anyBins":["brew","uv"]}}}
 ---
 
 # UV Global
