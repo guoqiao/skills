@@ -1,7 +1,9 @@
-# Ownership of open source flashcard app Anki transferred to for-profit AnkiHub
+# Anki ownership transferred to AnkiHub
 
-by @trms, at 2026-02-02T20:48:55.000Z, 50 points
+by @trms, at 2026-02-02T20:48:55.000Z, 102 points
+
 Origin: https://forums.ankiweb.net/t/ankis-growing-up/68610
+
 HackerNews: https://news.ycombinator.com/item?id=46861313
 
 Hi all, Anki’s 19th birthday was about 4 months ago. It would have been a good
@@ -76,6 +78,11 @@ everyone involved, and here's to many more years with Anki :)
     now. But still, these HN comments - after an announcement like this - are
     usually a good place to find out about replacements.
 
+        sodality2: Might as well give a recommendation then: I've been using hashcards
+        [0] for a few weeks now and have enjoyed its simplicity and the fact that it all
+        stays forever in raw markdown files and versioned git. A simple justfile has
+        also been helpful. [0]: https://news.ycombinator.com/item?id=46264492
+
 bingobangobungo: Good on him, 19 years is a long time to carry the flame. Thanks
 for getting me through school!
 
@@ -89,13 +96,32 @@ iOS client, which has always been neglected.)
     paid, given how much use I get for the price, but it sucks knowing it sucks and
     not being able to help make it better.
 
+        3D30497420: Agreed. I’m particularly excited that they’ll be investing in the
+        UI/UX.
+
+    avazhi: What’s so bad about the paid iOS client? I remember it being expensive
+    when I got it but it works fine for my use case (mix of getting me through part
+    of med school, all of law school, and the just general shit I’d like to remember
+    and learn). There’s definitely never been anything jarring about using it vs the
+    Mac or windows clients but I’m happy for somebody to point out the problems I’ve
+    been missing!
+
+    Jacobinski: True. It should however be noted that the most active maintainer of
+    AnkiDroid will be joining the new entity: > We’re currently talking to David
+    Allison, a long-time core contributor to AnkiDroid, about working together on
+    exactly these questions. His experience with AnkiDroid’s collaborative
+    development is invaluable, and we’re grateful he’s willing to help us get this
+    right. We’re incredibly excited to have him join us full-time to help propel
+    Anki into the future.
+
 siva7: It was a fascinating symbiotic between nerdy med students from all over
 the world and an obscure open source flashcard app that originally targeted
 language learners. I've been part of that community for many years and would
 have never foreseen this outcome but in hindsight it seems the best path forward
 for anki.
 
-paxys: Pulled an OpenAI
+    readthenotes1: I don't think it's just for nerdy med students nowadays. Who
+    studied for Step I without it? And How? (And Why? :)
 
 GaggiX: Even in the worst-case scenario, Anki is already perfect for me as is.
 
@@ -111,3 +137,34 @@ the high parameter count ML model as surrogate humans for memory recollection
 experiments and try to find low parameter count models (analytic or ML) that
 adequately distill the learning patterns, without having to do costly human-hour
 experiments on actual human brains.
+
+    azeirah: This is being actively researched (in the open!).
+    https://github.com/open-spaced-repetition/srs-benchmark
+
+NormenKD: Possible alternative to check out (not affiliated):
+https://mochi.cards/
+
+surrTurr: > What We Don’t Know Yet > Governance and decision-making: How
+decisions are made, who has final say, and how the community is heard > Roadmap
+and priorities: What gets built when and how to balance competing needs > The
+transition itself: How to bring in more support without disrupting what already
+works In other words: they have no clue what to do next
+(https://forums.ankiweb.net/t/ankis-growing-up/68610/2#p-1905...)
+
+Aachen: I'm an Anki user, on and off since 10 years or so, but was still
+confused. If I understood correctly, the entities here are: - Anki as an
+organisation is like the brand name and perhaps a reference implementation of
+the spaced repetition algorithm - AnkiWeb is what I thought this hub thing was.
+It's where you download decks - AnkiHub is a third party who sells decks as a
+monthly subscription and has their content on the deep web (you need to create
+an account and agree to terms to even see a listing of what's on there). This is
+who is getting ownership of the former two. Because they write that Anki will
+remain open source at its "core", I presume that means that they have no
+intention of opening that up - AnkiDroid is a separate open source project (an
+Android app). They're hiring the main developer, but it's not yet clear to me
+whether they're just going to get paid to work more on AnkiDroid or if they're
+also getting other tasks
+
+hermanzegerman: Oh for fucks sakes. No please no. AnkiHub was already annoying
+with shoving AI into their Add-On without anyone asking for it. I don't think
+this will go well

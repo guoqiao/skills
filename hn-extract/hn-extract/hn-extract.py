@@ -133,8 +133,8 @@ class HackerNewsExtractor:
         article_text = self.extract_url(article_url)
 
         self.add_line(f"# {title}")
-        self.add_line(f"by @{author}, at {created_at}, {points} points", sep="")
-        self.add_line(f"Origin: {article_url}", sep="")
+        self.add_line(f"by @{author}, at {created_at}, {points} points")
+        self.add_line(f"Origin: {article_url}")
         self.add_line(f"HackerNews: {hn_url}")
 
         self.add_line(article_text)
