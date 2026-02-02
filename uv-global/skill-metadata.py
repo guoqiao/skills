@@ -9,6 +9,7 @@ metadata = {
     "emoji": "🦞", # optional emoji used by the macOS Skills UI
     "homepage": "https://github.com/guoqiao/skills/blob/main/uv-global/uv-global/SKILL.md", # optional URL
     "os": ["darwin", "linux"],
+    "tags": ["python", "uv", "global", "venv"],
     "requires": {
       # each must exist in $PATH
       # "bins": [
