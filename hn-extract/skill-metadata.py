@@ -12,7 +12,7 @@ metadata = {
     "emoji": "🦞", # optional emoji used by the macOS Skills UI
     "homepage": f"https://github.com/guoqiao/skills/blob/main/{name}/{name}/SKILL.md", # optional URL
     "os": ["darwin", "linux", "win32"],
-    "tags": ["hn", "hackernews", "comments", "extract", "markdown", "python", "uv", "scraper", "rss", "reader", "summarize"],
+    "tags": ["latest", "hn", "hackernews", "comments", "extract", "markdown", "python", "uv", "scraper", "rss", "reader", "summarize"],
     "requires": {
       # each must exist in $PATH
       "bins": [
