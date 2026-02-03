@@ -29,9 +29,8 @@ Dependencies will be installed automatically by `uv` into to a dedicated venv wh
 
 When an agent is asked to extract a HackerNews post:
 1.  **Run the script** with an output path: `uv run --script ${baseDir}/hn-extract.py <input> -o /tmp/hn-<id>.md`.
-2.  **Upload the file** to the chat using the `message` tool (`action=send`, `filePath="/tmp/hn-<id>.md"`).
-3.  **Confirm and Offer Summary:** Respond to the user confirming the file has been sent, and ask: "Do you want me to summarize this markdown file?".
-4.  **Do not** output the full text or a summary directly in the chat unless specifically requested.
+2.  **Send ONE combined message:** Upload the file and ask the question in the *same* tool call. Use the `message` tool (`action=send`, `filePath="/tmp/hn-<id>.md"`, `message="Extraction complete. Do you want me to summarize it?"`).
+3.  **Do not** output the full text or a summary directly in the chat unless specifically requested.
 
 ## Usage
 
