@@ -25,6 +25,14 @@ see [Example Output](https://github.com/guoqiao/skills/blob/main/hn-extract/exam
 No install beyond having `uv`.
 Dependencies will be installed automatically by `uv` into to a dedicated venv when run this script.
 
+## Usage Workflow (Mandatory for Agents)
+
+When an agent is asked to extract a HackerNews post:
+1.  **Run the script** with an output path: `uv run --script ${baseDir}/hn-extract.py <input> -o /tmp/hn-<id>.md`.
+2.  **Upload the file** to the chat using the `message` tool (`action=send`, `filePath="/tmp/hn-<id>.md"`).
+3.  **Confirm and Offer Summary:** Respond to the user confirming the file has been sent, and ask: "Do you want me to summarize this markdown file?".
+4.  **Do not** output the full text or a summary directly in the chat unless specifically requested.
+
 ## Usage
 
 ```bash
