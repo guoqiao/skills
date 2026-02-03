@@ -42,19 +42,25 @@ metadata = {
 }
 
 
+def json_pretty(data):
+    return json.dumps(data, ensure_ascii=False, indent=2)
+
+
+def json_1liner(data):
+  return json.dumps(data, ensure_ascii=False, separators=(',',':'))
+
+
+
 def main():
     parser = argparse.ArgumentParser(prog='Agent Skill Metadata Generator')
     parser.add_argument('-v', '--verbose', action='store_true')
     args = parser.parse_args()
-    if args.verbose:
-        # generate pretty json for human to check
-        s = json.dumps(metadata, ensure_ascii=False, indent=2)
-    else:
-      # generate 1-liner json to use in SKILL.md as metadata
-        s = json.dumps(metadata, ensure_ascii=False, separators=(',',':'))
-    print(f"metadata: {s}")
-    tags = ','.join(metadata['openclaw']['tags'])
-    print(f"tags: {tags}")
+    tags = metadata['openclaw']['tags']
+    homepage = metadata['openclaw']['homepage']
+    json_fmt = json_pretty if args.verbose else json_1liner
+    print(f"\nmetadata: {json_fmt(metadata)}\n", )
+    print(f"\ntags: {','.join(tags)}\n")
+    print(f"\nhomepage: {homepage}\n")
 
 
 if __name__ == "__main__":

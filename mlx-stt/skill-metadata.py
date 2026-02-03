@@ -61,10 +61,12 @@ def main():
     parser = argparse.ArgumentParser(prog='OpenClaw Skill Metadata Generator')
     parser.add_argument('-v', '--verbose', action='store_true')
     args = parser.parse_args()
-    tags = metadata['openclaw']['tags']
     json_fmt = json_pretty if args.verbose else json_1liner
-    print(f"metadata:\n\n{json_fmt(metadata)}\n\n", )
-    print(f"tags:\n\n{','.join(tags)}\n\n")
+    tags = metadata['openclaw']['tags']
+    homepage = metadata['openclaw']['homepage']
+    print(f"\nmetadata: {json_fmt(metadata)}\n", )
+    print(f"\ntags: {','.join(tags)}\n")
+    print(f"\nhomepage: {homepage}\n")
 
 
 
