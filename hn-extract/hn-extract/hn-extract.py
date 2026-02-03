@@ -103,11 +103,11 @@ class HackerNewsExtractor:
 
         return cls.from_url(uri)
 
-    def add_line(self, line: str, indent_level: int = 0, sep="\n"):
+    def add_line(self, line: str, indent_level: int = 0, sep="\n", width=80):
         if line.strip():
             indent = self.indent_char * indent_level
             indent_line = textwrap.indent(
-                textwrap.fill(line, width=80),
+                textwrap.fill(line, width=width) if width else line,
                 indent,
             )
             self.lines.append(indent_line + sep)
@@ -134,8 +134,9 @@ class HackerNewsExtractor:
 
         self.add_line(f"# {title}")
         self.add_line(f"by @{author}, at {created_at}, {points} points")
-        self.add_line(f"Article URL: {article_url}")
-        self.add_line(f"Comments URL: {hn_url}")
+        # do not wrap url lines
+        self.add_line(f"Article URL: {article_url}", width=0)
+        self.add_line(f"Comments URL: {hn_url}", width=0)
 
         self.add_line(article_text)
 
