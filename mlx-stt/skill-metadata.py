@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 import json
 import argparse
+from pathlib import Path
+
+name = Path(__file__).parent.name
+homepage = f"https://github.com/guoqiao/skills/blob/main/{name}/{name}/SKILL.md"
 
 # https://docs.openclaw.ai/tools/skills#gating-load-time-filters
 metadata = {
   "openclaw": {
     "always": True, # always include the skill (skip other gates)
     "emoji": "🦞", # optional emoji used by the macOS Skills UI
-    "homepage": "https://github.com/guoqiao/skills/blob/main/mlx-stt/mlx-stt/SKILL.md", # optional URL
+    "homepage": homepage, # optional URL
     "os": ["darwin"],
     "tags": [
       "latest",

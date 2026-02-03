@@ -5,11 +5,8 @@ install:
 
 i: install
 
-metadata:
-	uv run skill-metadata.py
+m:
+	@uv run skill-metadata.py
 
-m: metadata
-
-tags:
-	@echo "latest,python,uv,global,venv"
-
+M:
+	@uv run skill-metadata.py -v

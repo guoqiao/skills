@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 import json
 import argparse
+from pathlib import Path
+
+name = Path(__file__).parent.name
+homepage = f"https://github.com/guoqiao/skills/blob/main/{name}/{name}/SKILL.md"
 
 # https://docs.openclaw.ai/tools/skills#gating-load-time-filters
 metadata = {
   "openclaw": {
     "always": True, # always include the skill (skip other gates)
     "emoji": "🦞", # optional emoji used by the macOS Skills UI
-    "homepage": "https://github.com/guoqiao/skills/blob/main/uv-global/uv-global/SKILL.md", # optional URL
+    "homepage": homepage, # optional URL
     "os": ["darwin", "linux"],
     "tags": ["python", "uv", "global", "venv"],
     "requires": {
@@ -40,17 +44,24 @@ metadata = {
 }
 
 
+def json_pretty(data):
+    return json.dumps(data, ensure_ascii=False, indent=2)
+
+
+def json_1liner(data):
+  return json.dumps(data, ensure_ascii=False, separators=(',',':'))
+
+
 def main():
     parser = argparse.ArgumentParser(prog='Agent Skill Metadata Generator')
     parser.add_argument('-v', '--verbose', action='store_true')
     args = parser.parse_args()
-    if args.verbose:
-        # generate pretty json for human to check
-        s = json.dumps(metadata, ensure_ascii=False, indent=2)
-    else:
-      # generate 1-liner json to use in SKILL.md as metadata
-        s = json.dumps(metadata, ensure_ascii=False, separators=(',',':'))
-    print(s)
+    tags = metadata['openclaw']['tags']
+    homepage = metadata['openclaw']['homepage']
+    json_fmt = json_pretty if args.verbose else json_1liner
+    print(f"\nmetadata: {json_fmt(metadata)}\n", )
+    print(f"\ntags: {','.join(tags)}\n")
+    print(f"\nhomepage: {homepage}\n")
 
 
 if __name__ == "__main__":

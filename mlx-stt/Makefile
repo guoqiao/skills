@@ -4,7 +4,7 @@ install:
 i: install
 
 M:
-	uv run skill-metadata.py -v
+	@uv run skill-metadata.py -v
 
 m:
-	uv run skill-metadata.py
+	@uv run skill-metadata.py
