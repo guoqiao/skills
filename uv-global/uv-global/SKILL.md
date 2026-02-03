@@ -14,7 +14,7 @@ Use this skill when the user needs Python packages (data processing, scraping, e
 
 ## Requirements
 
-`uv` available. If missing, you need either `brew` (macOS) or `curl` to install it.
+`uv` available. If missing, you need either `brew` (macOS/Linux) or `curl` to install it.
 
 ## Installation
 
