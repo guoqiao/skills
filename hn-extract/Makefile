@@ -1,7 +1,7 @@
 name := hn-extract
 
-metadata:
+m:
 	uv run skill-metadata.py
 
-m: metadata
-
+M:
+	uv run skill-metadata.py -v
