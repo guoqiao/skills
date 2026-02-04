@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 
 name = Path(__file__).parent.name
-homepage = f"https://github.com/guoqiao/skills/blob/main/{name}/src/SKILL.md"
+homepage = f"https://github.com/guoqiao/skills/blob/main/{name}/{name}/SKILL.md"
 
 # https://docs.openclaw.ai/tools/skills#gating-load-time-filters
 metadata = {
