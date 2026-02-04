@@ -1,14 +1,14 @@
 ---
 name: hn-extract
-description: Extract a HackerNews post (article + comments) into clean Markdown for quick reading or LLM input.
+description: Extract a HackerNews post (article + comments) into single clean Markdown for quick reading or LLM input.
 metadata:  {"openclaw":{"always":true,"emoji":"🦞","homepage":"https://github.com/guoqiao/skills/blob/main/hn-extract/hn-extract/SKILL.md","os":["darwin","linux","win32"],"tags":["hn","hackernews","comments","extract","markdown","python","uv","scraper","rss","reader","summarize"],"requires":{"bins":["uv"]}}}
 ---
 
 # HackerNews Extract
 
-Extract a HackerNews post (article + comments) into clean Markdown for quick reading or LLM input.
+Extract a HackerNews post (article + comments) into single clean Markdown for quick reading or LLM input.
 
-see [Example Output](https://github.com/guoqiao/skills/blob/main/hn-extract/example-output.md)
+see [Examples](https://github.com/guoqiao/skills/blob/main/hn-extract/examples)
 
 ## What it does
 - Accepts an HackerNews id, url, or a saved Algolia JSON file.
