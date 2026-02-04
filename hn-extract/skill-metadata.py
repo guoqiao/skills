@@ -4,14 +4,14 @@ import argparse
 from pathlib import Path
 
 name = Path(__file__).parent.name
-homepage = f"https://github.com/guoqiao/skills/blob/main/{name}/{name}/SKILL.md"
+homepage = f"https://github.com/guoqiao/skills/blob/main/{name}/src/SKILL.md"
 
 # https://docs.openclaw.ai/tools/skills#gating-load-time-filters
 metadata = {
   "openclaw": {
-    "always": True, # always include the skill (skip other gates)
-    "emoji": "🦞", # optional emoji used by the macOS Skills UI
-    "homepage": homepage, # optional URL
+    "always": True,  # always include the skill (skip other gates)
+    "emoji": "🦞",  # optional emoji used by the macOS Skills UI
+    "homepage": homepage,  # optional URL
     "os": ["darwin", "linux", "win32"],
     "tags": ["latest", "hn", "hackernews", "comments", "extract", "markdown", "python", "uv", "scraper", "rss", "reader", "summarize"],
     "requires": {
@@ -48,7 +48,7 @@ def json_pretty(data):
 
 
 def json_1liner(data):
-  return json.dumps(data, ensure_ascii=False, separators=(',',':'))
+    return json.dumps(data, ensure_ascii=False, separators=(',', ':'))
 
 
 def main():
@@ -61,6 +61,7 @@ def main():
     print(f"\nmetadata: {json_fmt(metadata)}\n", )
     print(f"\ntags: {','.join(tags)}\n")
     print(f"\nhomepage: {homepage}\n")
+    print("\nimport: https://clawhub.ai/import\n")
 
 
 if __name__ == "__main__":
