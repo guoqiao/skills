@@ -4,7 +4,7 @@ import argparse
 from pathlib import Path
 
 name = Path(__file__).parent.name
-homepage = f"https://github.com/guoqiao/skills/blob/main/{name}/src/SKILL.md"
+homepage = f"https://github.com/guoqiao/skills/blob/main/{name}/{name}/SKILL.md"
 
 # https://docs.openclaw.ai/tools/skills#gating-load-time-filters
 metadata = {
@@ -73,9 +73,8 @@ def main():
     print(f"\nmetadata: {json_fmt(metadata)}\n", )
     print(f"\ntags: {','.join(tags)}\n")
     print(f"\nhomepage: {homepage}\n")
-
+    print("\nimport: https://clawhub.ai/import\n")
 
 
 if __name__ == "__main__":
     main()
-
