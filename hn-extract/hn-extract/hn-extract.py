@@ -29,6 +29,17 @@ def tee_json(data):
     return data
 
 
+def is_uri_file(uri: str) -> bool:
+    """Check if a uri is a file path, either url or path."""
+    uri = str(uri).strip()
+    # if ends with / it's a directory, not a file
+    if uri.endswith('/'):
+        return False
+    # foo-bar or foo.bar or foo.bar.baz
+    basename = uri.rsplit('/', 1)[-1]
+    return '.' in basename
+
+
 def get_request_session(retry_total=3):
     """Get a request session with automatic retry."""
     retries = Retry(total=retry_total)
