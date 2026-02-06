@@ -209,8 +209,8 @@ class HackerNewsExtractor:
 
     def output_to_file(self, path, verbose=False):
         path = Path(path)
-        if path.is_file():
-            out_path = path.with_suffix(".md")
+        if path.suffix:  # .md or .txt
+            out_path = path
             out_dir = path.parent
         else:
             out_dir = path
