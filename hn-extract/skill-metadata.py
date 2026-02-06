@@ -2,6 +2,7 @@
 import json
 import argparse
 import subprocess
+import shlex
 from pathlib import Path
 
 version = '0.1.4'
@@ -18,7 +19,6 @@ tag_list = [
   "scraper", "rss", "reader", "summarize",
 ]
 tags = ','.join(tag_list)
-
 
 # https://docs.openclaw.ai/tools/skills#gating-load-time-filters
 metadata = {
@@ -64,6 +64,18 @@ def json_1liner(data):
     return json.dumps(data, ensure_ascii=False, separators=(',', ':'))
 
 
+def run_cmd(cmd: str | list):
+    if isinstance(cmd, str):
+        cmdline = cmd
+        shell = True
+    else:
+        cmd = [str(arg) for arg in cmd if arg]
+        cmdline = shlex.join(cmd)
+        shell = False
+    print(f"running cmd: {cmdline}")
+    return subprocess.run(cmd, check=True, shell=shell)
+
+
 def show(verbose=False):
     json_fmt = json_pretty if verbose else json_1liner
     homepage = metadata['openclaw']['homepage']
@@ -82,7 +94,7 @@ def publish():
         "--tags", tags,
         str(path),
     ]
-    subprocess.run(cmd, check=True)
+    return run_cmd(cmd)
 
 
 def main():
