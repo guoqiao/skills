@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import json
 import argparse
+import subprocess
+import shlex
 from pathlib import Path
 
 version = '0.1.5'
@@ -66,12 +68,26 @@ def json_pretty(data):
 def json_1liner(data):
     return json.dumps(data, ensure_ascii=False, separators=(',', ':'))
 
+
+def run_cmd(cmd: str | list):
+    if isinstance(cmd, str):
+        cmdline = cmd
+        shell = True
+    else:
+        cmd = [str(arg) for arg in cmd if arg]
+        cmdline = shlex.join(cmd)
+        shell = False
+    print(f"running cmd: {cmdline}")
+    return subprocess.run(cmd, check=True, shell=shell)
+
+
 def show(verbose=False):
     json_fmt = json_pretty if verbose else json_1liner
     homepage = metadata['openclaw']['homepage']
     print(f"\nmetadata: {json_fmt(metadata)}\n", )
     print(f"\nhomepage: {homepage}\n")
     print("\nimport: https://clawhub.ai/import\n")
+
 
 def publish():
     cmd = [
@@ -81,8 +97,9 @@ def publish():
         "--name", name,
         "--version", version,
         "--tags", tags,
-        path,
+        str(path),
     ]
+    return run_cmd(cmd)
 
 
 def main():
