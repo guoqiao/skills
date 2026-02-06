@@ -1,10 +1,24 @@
 #!/usr/bin/env python
 import json
 import argparse
+import subprocess
 from pathlib import Path
 
-name = Path(__file__).parent.name
-homepage = f"https://github.com/guoqiao/skills/blob/main/{name}/{name}/SKILL.md"
+version = '0.1.4'
+name = "HackerNews Extract"
+slug = Path(__file__).parent.name
+homepage = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
+path = Path(__file__).with_name(slug)
+tag_list = [
+  "latest",
+  "hn", "hackernews",
+  "comments", "extract",
+  "markdown",
+  "python", "uv",
+  "scraper", "rss", "reader", "summarize",
+]
+tags = ','.join(tag_list)
+
 
 # https://docs.openclaw.ai/tools/skills#gating-load-time-filters
 metadata = {
@@ -13,7 +27,6 @@ metadata = {
     "emoji": "🦞",  # optional emoji used by the macOS Skills UI
     "homepage": homepage,  # optional URL
     "os": ["darwin", "linux", "win32"],
-    "tags": ["latest", "hn", "hackernews", "comments", "extract", "markdown", "python", "uv", "scraper", "rss", "reader", "summarize"],
     "requires": {
       # each must exist in $PATH
       "bins": [
@@ -51,19 +64,38 @@ def json_1liner(data):
     return json.dumps(data, ensure_ascii=False, separators=(',', ':'))
 
 
-def main():
-    parser = argparse.ArgumentParser(prog='Agent Skill Metadata Generator')
-    parser.add_argument('-v', '--verbose', action='store_true')
-    args = parser.parse_args()
-    tags = metadata['openclaw']['tags']
+def show(verbose=False):
+    json_fmt = json_pretty if verbose else json_1liner
     homepage = metadata['openclaw']['homepage']
-    json_fmt = json_pretty if args.verbose else json_1liner
     print(f"\nmetadata: {json_fmt(metadata)}\n", )
-    print(f"\ntags: {','.join(tags)}\n")
     print(f"\nhomepage: {homepage}\n")
     print("\nimport: https://clawhub.ai/import\n")
 
 
+def publish():
+    cmd = [
+        "clawhub",
+        "publish",
+        "--slug", slug,
+        "--name", name,
+        "--version", version,
+        "--tags", tags,
+        str(path),
+    ]
+    subprocess.run(cmd, check=True)
+
+
+def main():
+    parser = argparse.ArgumentParser(prog='Agent Skill Metadata Generator')
+    parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('-s', '--show', action='store_true')
+    parser.add_argument('-p', '--publish', action='store_true')
+    args = parser.parse_args()
+    if args.show:
+        show(verbose=args.verbose)
+    elif args.publish:
+        publish()
+
+
 if __name__ == "__main__":
     main()
-
