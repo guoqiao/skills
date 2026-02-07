@@ -150,7 +150,7 @@ class HackerNewsExtractor:
         return self.add_line(*args, sep=sep, **kwargs)
 
     def get_html_form_url(self, url: str):
-        return fetch_url(url, no_ssl=True)
+        return fetch_url(url)
 
     def get_text_from_html(self, html: str):
         return extract(
