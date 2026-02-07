@@ -1,10 +1,18 @@
+slug := $(shell basename $(shell pwd))
+
 install:
-	bash mlx-stt/install.sh
+	bash ${slug}/install.sh
 
 i: install
 
-M:
-	@uv run skill-metadata.py -v
-
 m:
-	@uv run skill-metadata.py
+	@uv run skill-metadata.py --show
+
+M:
+	@uv run skill-metadata.py --show --verbose
+
+publish:
+	@uv run skill-metadata.py --publish
+
+undelete:
+	clawhub undelete ${slug}
