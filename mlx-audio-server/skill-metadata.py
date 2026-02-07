@@ -5,7 +5,7 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.1.5'
+version = '0.2.0'
 name = "MLX Audio Server"
 slug = Path(__file__).parent.name
 homepage = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
@@ -14,7 +14,7 @@ tag_list = [
   "latest",
   "asr", "stt", "speech-to-text",
   "tts", "text-to-speech",
-  "mlx", "audio", "mlx-audio",
+  "mlx", "audio", "mlx-audio", "mlx-audio-server",
   "glm", "glm-asr", "glm-asr-nano-2512", "glm-asr-nano-2512-8bit",
   "macOS", "MacBook", "Mac mini", "Apple Silicon",
   "server", "local", "openai", "api", "compatible", "openai-compatible", "transcription",
