@@ -10,9 +10,16 @@ Extract a HackerNews post (article + comments) into single clean Markdown for qu
 
 see [Examples](https://github.com/guoqiao/skills/blob/main/hn-extract/examples)
 
+Use this skill when the user types `/hn-extract` or asks to extract/summarize a HackerNews Post.
+
+**Triggers:**
+- "Extract HN Post ..."
+- "/hn-extract <hn_id_or_url>"
+- "Summarize this HN post ..."
+
 ## What it does
 - Accepts an HackerNews id or url
-- Download the linked article HTML, cleans and formats it.
+- Download the linked article HTML, extracts text, cleans and formats it.
 - Fetches the Hacknews post metadata and comments.
 - Outputs a readable combined markdown file with original article, threaded comments, and key metadata.
 
@@ -36,7 +43,7 @@ When an agent is asked to extract a HackerNews post:
 
 ```bash
 # run as uv script
-uv run --script ${baseDir}/hn-extract.py <hn-id|hn-url|path/to/item.json> [-o path/to/output.md]
+uv run --script ${baseDir}/hn-extract.py <hn-id|hn-url> [-o path/to/output.md]
 
 # Examples
 uv run --script ${baseDir}/hn-extract.py 46861313 -o /tmp/output.md
