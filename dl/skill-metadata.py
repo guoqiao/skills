@@ -5,7 +5,7 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.0.2'
+version = '0.0.3'
 name = "Media Downloader"
 slug = Path(__file__).parent.name
 homepage = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
