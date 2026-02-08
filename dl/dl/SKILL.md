@@ -19,6 +19,14 @@ Recommended Extra Setup:
 
 # Usage
 
+Just run this python uv script:
+```
+uv run --script ${baseDir}/dl.py $url
+```
+Which will auto detect Video/Music and Single/Playlist info from the url, and save to corresponding locations.
+
+Or, you can still use following shell cmds:
+
 Download Single Video, save into ~/Movies as mp4:
 ```
 uvx yt-dlp@latest --js-runtime node --remote-components ejs:github \
