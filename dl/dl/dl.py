@@ -145,6 +145,34 @@ def download(plan: DownloadPlan) -> None:
         ydl.download([plan.url])
 
 
+def cli():
+    parser = argparse.ArgumentParser(
+        description="Smart Media Downloader",
+    )
+    parser.add_argument("url", help="Media URL to download")
+    parser.add_argument(
+        "-n", "--dry-run", action="store_true",
+        help="Probe and print the plan without downloading",
+    )
+    parser.add_argument(
+        "-m", "--music", action="store_true",
+        help="Download best quality audio as music",
+    )
+    parser.add_argument(
+        "-a", "--audio", action="store_true",
+        help="Download decent quality audio",
+    )
+    parser.add_argument(
+        "-s", "--subtitle", action="store_true",
+        help="Download subtitle",
+    )
+    parser.add_argument(
+        "-f", "--format",
+        help="yt-dlp format string",
+    )
+    return parser.parse_args()
+
+
 def main() -> None:
     args = cli()
     plan = probe(args.url)
