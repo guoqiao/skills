@@ -21,8 +21,42 @@ MAX_AUDIO_SIZE = 30 * 1024 * 1024  # 30M
 PLAYLIST_LIMIT = 30
 
 
-MUSIC_DIR = Path(os.getenv("MUSIC_DIR", "~/Music")).expanduser()
-VIDEO_DIR = Path(os.getenv("VIDEO_DIR", "~/Movies")).expanduser()
+HERE = Path(__file__).parent
+
+
+def get_dir(candidates: list[str], default: Path = HERE) -> Path:
+    for candidate in candidates:
+        if candidate:
+            path = Path(candidate).expanduser().resolve()
+            if path.is_dir():
+                return path.expanduser().resolve()
+    return default
+
+
+def get_video_dir():
+    candidates = [
+        os.getenv("DL_VIDEO_DIR"),
+        os.getenv("VIDEO_DIR"),
+        "~/Movies",
+        "~/Videos",
+        "~/Downloads",
+    ]
+    return get_dir(candidates, default=HERE)
+
+
+def get_music_dir():
+    candidates = [
+        os.getenv("DL_MUSIC_DIR"),
+        os.getenv("MUSIC_DIR"),
+        "~/Music",
+        "~/Audio",
+        "~/Downloads",
+    ]
+    return get_dir(candidates, default=HERE)
+
+
+VIDEO_DIR = get_video_dir()
+MUSIC_DIR = get_music_dir()
 
 
 class MediaKind(Enum):
@@ -147,7 +181,8 @@ def download(plan: DownloadPlan) -> None:
 
 def cli():
     parser = argparse.ArgumentParser(
-        description="Smart Media Downloader",
+        prog="Smart Media Downloader",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
     parser.add_argument("url", help="Media URL to download")
     parser.add_argument(
@@ -156,19 +191,29 @@ def cli():
     )
     parser.add_argument(
         "-m", "--music", action="store_true",
-        help="Download best quality audio as music",
+        help="Download best quality audio from url",
     )
     parser.add_argument(
         "-a", "--audio", action="store_true",
-        help="Download decent quality audio",
+        help="Download decent quality audio from url",
     )
     parser.add_argument(
         "-s", "--subtitle", action="store_true",
-        help="Download subtitle",
+        help="Download subtitle from url",
     )
     parser.add_argument(
         "-f", "--format",
         help="yt-dlp format string",
+    )
+    parser.add_argument(
+        "-M", "--music_dir",
+        default=MUSIC_DIR,
+        help="Music directory",
+    )
+    parser.add_argument(
+        "-V", "--video_dir",
+        default=VIDEO_DIR,
+        help="Video directory",
     )
     return parser.parse_args()
 
