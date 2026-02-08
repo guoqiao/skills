@@ -9,6 +9,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 from dataclasses import dataclass
 from enum import Enum
 from pathlib import Path
@@ -20,6 +21,9 @@ import yt_dlp
 MAX_VIDEO_SIZE = 2_000 * 1024 * 1024  # 2000M
 MAX_AUDIO_SIZE = 30 * 1024 * 1024  # 30M
 PLAYLIST_LIMIT = 30
+
+MUSIC_DIR = Path(os.getenv("MUSIC_DIR", "~/Music")).expanduser()
+VIDEO_DIR = Path(os.getenv("VIDEO_DIR", "~/Movies")).expanduser()
 
 
 class MediaKind(Enum):
@@ -106,7 +110,7 @@ def build_options(plan: DownloadPlan) -> dict[str, Any]:
         "outtmpl": {"default": outtmpl},
         "paths": {
             "home": str(
-                Path.home() / ("Music" if plan.kind is MediaKind.MUSIC else "Movies"),
+                MUSIC_DIR if plan.kind is MediaKind.MUSIC else VIDEO_DIR,
             ),
         },
         "noplaylist": not plan.is_playlist,
