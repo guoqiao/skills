@@ -2,11 +2,9 @@
 # /// script
 # requires-python = ">=3.12"
 # dependencies = [
-#     "yt-dlp>=2026.2.4",
+#     "yt-dlp",
 # ]
 # ///
-
-from __future__ import annotations
 
 import argparse
 import os
@@ -21,6 +19,7 @@ import yt_dlp
 MAX_VIDEO_SIZE = 2_000 * 1024 * 1024  # 2000M
 MAX_AUDIO_SIZE = 30 * 1024 * 1024  # 30M
 PLAYLIST_LIMIT = 30
+
 
 MUSIC_DIR = Path(os.getenv("MUSIC_DIR", "~/Music")).expanduser()
 VIDEO_DIR = Path(os.getenv("VIDEO_DIR", "~/Movies")).expanduser()
@@ -37,19 +36,6 @@ class DownloadPlan:
     kind: MediaKind
     is_playlist: bool
     extractor: str
-
-
-def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(
-        description="Smart media downloader with yt-dlp defaults from SKILL.md.",
-    )
-    parser.add_argument("url", help="Media URL to download")
-    parser.add_argument(
-        "--dry-run",
-        action="store_true",
-        help="Probe and print the plan without downloading",
-    )
-    return parser.parse_args()
 
 
 def detect_kind(info: dict[str, Any], url: str) -> MediaKind:
@@ -160,7 +146,7 @@ def download(plan: DownloadPlan) -> None:
 
 
 def main() -> None:
-    args = parse_args()
+    args = cli()
     plan = probe(args.url)
     print_plan(plan)
 
