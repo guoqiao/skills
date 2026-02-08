@@ -3,6 +3,7 @@ name: dl
 description: Download media, smart and to the point.
 metadata: {"openclaw":{"always":true,"emoji":"🦞","homepage":"https://github.com/guoqiao/skills/blob/main/dl/dl/SKILL.md","os":["darwin","linux","win32"],"requires":{"bins":["uv"]}}}
 triggers:
+- "/dl <url>"
 - "Download this video ..."
 - "Download this music ..."
 ---
@@ -10,6 +11,8 @@ triggers:
 # Media Downloader
 
 Download media with yt-dlp, with sane options, to expected locations.
+
+Use this skill when the user types `/dl <url>` or asks to download a video/music url.
 
 Recommended Extra Setup:
 - Install a DLNA/UPnP Media Server on this machine, e.g.: miniDLNA, Universal Media Server, Jellyfin, etc.
