@@ -5,10 +5,11 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.0.6'
+version = '0.0.7'
 name = "Smart Media Downloader"
 slug = Path(__file__).parent.name
-homepage = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
+homepage = f"https://clawhub.ai/guoqiao/{slug}"
+# homepage = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
 path = Path(__file__).with_name(slug)
 tag_list = [
   "latest",
@@ -93,7 +94,8 @@ def publish():
         "--tags", tags,
         str(path),
     ]
-    return run_cmd(cmd)
+    run_cmd(cmd)
+    print(homepage)
 
 
 def main():

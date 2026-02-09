@@ -12,15 +12,7 @@ triggers:
 
 Download media (via yt-dlp,  more tools comming) with expected formats and folders, and optionally, auto share with Media Server in LAN, watch on TV directly.
 
-For Human:
-Recommended extra setup to make this skill really useful and different from other media downloaders:
-- Install a DLNA/UPnP Media Server on this machine, e.g.: Universal Media Server(preferred on mac), miniDLNA, Jellyfin, etc.
-- Add the ~/Music and ~/Movies (or ~/Videos) folders to the media server to share over LAN.
-- Downloaded media with this skill, it will save media into these folders automatically.
-- Play the media on other devices(e.g.: TV) directly, which will be shared by the media server.
-
-For Agent:
-Use this skill when the user types `/dl <url>` or asks to download a video/music from url.
+For Agent: use this skill when the user types `/dl <url>` or asks to download a video/music from YouTube/Bilibili/X/etc url.
 
 ## Usage
 
@@ -40,3 +32,11 @@ Music:
 - `https://music.youtube.com/watch?v=<id>`  -> save to `~/Music/<name>.m4a`
 - `https://music.youtube.com/playlist?list=PL...`  -> save to `~/Music/<playlist>/*.m4a`
 
+
+## Extra Setup For Human
+
+To make this skill really useful and different from other media downloaders:
+- Install a DLNA/UPnP Media Server on this machine, e.g.: Universal Media Server(preferred on mac), miniDLNA, Jellyfin, etc.
+- Add the ~/Music and ~/Movies (or ~/Videos) folders to the media server to share over LAN.
+- Downloaded media with this skill, it will save media into these folders automatically.
+- Play the media on other devices(e.g.: TV) directly, which will be shared by the media server.
