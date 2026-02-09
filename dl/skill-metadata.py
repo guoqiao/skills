@@ -6,7 +6,7 @@ import shlex
 from pathlib import Path
 
 version = '0.0.9'
-name = "Smart Media Downloader"
+name = "Media Downloader"
 slug = Path(__file__).parent.name
 homepage = f"https://clawhub.ai/guoqiao/{slug}"
 # homepage = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
@@ -95,6 +95,8 @@ def publish():
         str(path),
     ]
     run_cmd(cmd)
+    run_cmd(["git", "tag", f"dl-{version}"])
+    run_cmd(["git", "push", "--tags"])
     print(homepage)
 
 
