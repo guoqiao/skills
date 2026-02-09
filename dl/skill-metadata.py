@@ -5,7 +5,7 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.0.7'
+version = '0.0.8'
 name = "Smart Media Downloader"
 slug = Path(__file__).parent.name
 homepage = f"https://clawhub.ai/guoqiao/{slug}"
