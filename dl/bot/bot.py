@@ -22,7 +22,8 @@ TG_API_ID = int(os.environ["TG_API_ID"])
 TG_API_HASH = os.environ["TG_API_HASH"]
 TG_BOT_TOKEN = os.environ["TG_BOT_TOKEN"]
 
-MAX_UPLOAD_BYTES = 1024 * 1024 * 1024  # 1GB
+MAX_UPLOAD_MB = int(os.getenv("MAX_UPLOAD_MB", "300"))
+MAX_UPLOAD_BYTES = MAX_UPLOAD_MB * 1024 * 1024
 MAX_FILES_TO_SEND = 5
 
 HELP = (
