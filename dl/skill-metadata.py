@@ -5,11 +5,14 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.0.9'
+version = '0.1.0'
 name = "Media Downloader"
+description = "Download Video/Music from YouTube/Bilibili/X/etc."
 slug = Path(__file__).parent.name
-homepage = f"https://clawhub.ai/guoqiao/{slug}"
-# homepage = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
+author = "guoqiao"
+github_url = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
+clawhub_url = f"https://clawhub.ai/{author}/{slug}"
+homepage = clawhub_url
 path = Path(__file__).with_name(slug)
 tag_list = [
   "latest",
@@ -78,10 +81,16 @@ def run_cmd(cmd: str | list):
 
 def show(verbose=False):
     json_fmt = json_pretty if verbose else json_1liner
-    homepage = metadata['openclaw']['homepage']
-    print(f"\nmetadata: {json_fmt(metadata)}\n", )
-    print(f"\nhomepage: {homepage}\n")
-    print("\nimport: https://clawhub.ai/import\n")
+    lines = [
+      "---",
+      f"name: {slug}",
+      f"description: {description}",
+      f"version: {version}",
+      f"author: {author}",
+      f"metadata: {json_fmt(metadata)}",
+      "---",
+    ]
+    print("\n".join(lines))
 
 
 def publish():
@@ -95,7 +104,7 @@ def publish():
         str(path),
     ]
     run_cmd(cmd)
-    run_cmd(["git", "tag", f"dl-{version}"])
+    run_cmd(["git", "tag", f"{slug}-{version}"])
     run_cmd(["git", "push", "--tags"])
     print(homepage)
 
