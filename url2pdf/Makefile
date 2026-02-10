@@ -17,10 +17,11 @@ publish:
 undelete:
 	clawhub undelete ${slug}
 
-url1 := https://mariozechner.at/posts/2025-11-30-pi-coding-agent/
-url2 := https://www.ruanyifeng.com/blog/2026/01/weekly-issue-383.html
-test:
-	uv run --script ${slug}/${slug}.py ${url2}
 
-t:
-	uv run --script ${slug}/${slug}.py "Hello, Human!"
+url1 := https://mariozechner.at/posts/2025-11-30-pi-coding-agent/
+t1:
+	uv run --script ${slug}/${slug}.py ${url1}
+
+url2 := https://www.ruanyifeng.com/blog/2026/01/weekly-issue-383.html
+t2:
+	uv run --script ${slug}/${slug}.py ${url2}
