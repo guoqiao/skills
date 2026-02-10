@@ -21,7 +21,10 @@ See [examples](https://github.com/guoqiao/skills/tree/main/url2pdf/examples).
 
 ## Installation
 
-If `uv` exists, no installation needed.
+playwright itself will be installed by uv automatically, while it also needs browser to be installed:
+```
+uvx playwright install chromium
+```
 
 ## Usage
 
