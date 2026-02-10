@@ -1,16 +1,16 @@
 ---
 name: mlx-tts
 description: Text-To-Speech with MLX (Apple Silicon) and opensource models (default QWen3-TTS) locally.
-version: 0.0.1
+version: 0.0.2
 author: guoqiao
-metadata: {"openclaw":{"always":true,"emoji":"🦞","homepage":"https://github.com/guoqiao/skills/blob/main/mlx-tts/mlx-tts/SKILL.md","os":["darwin"],"requires":{"bins":["brew"]}}}
+metadata: {"openclaw":{"always":true,"emoji":"🦞","homepage":"https://clawhub.ai/guoqiao/mlx-tts","os":["darwin"],"requires":{"bins":["brew"]}}}
 triggers:
 - "/mlx-tts <text>"
 - "TTS ..."
 - "Convert text to audio ..."
 ---
 
-# MLX Text to Speech
+# MLX TTS
 
 Text-To-Speech with MLX (Apple Silicon) and opensource models (default QWen3-TTS) locally.
 
@@ -35,6 +35,7 @@ This script will use `brew` to install these cli tools if not available:
 To generate audio from text, run this script:
 
 ```bash
-bash ${baseDir}/mlx-stt.sh <audio_file_path>
+bash ${baseDir}/mlx-tts.sh "<text>"
 ```
-generated audio path will be printed to stdout.
+- First run could be a little slow, since it will need to download model.
+- generated audio path will be printed to stdout.

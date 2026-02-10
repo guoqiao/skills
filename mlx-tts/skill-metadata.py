@@ -5,12 +5,14 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.0.1'
+version = '0.0.2'
 name = "MLX TTS"
 description = "Text-To-Speech with MLX (Apple Silicon) and opensource models (default QWen3-TTS) locally."
 author = "guoqiao"
 slug = Path(__file__).parent.name
-homepage = f"https://github.com/{author}/skills/blob/main/{slug}/{slug}/SKILL.md"
+github_url = f"https://github.com/{author}/skills/blob/main/{slug}/{slug}/SKILL.md"
+clawhub_url = f"https://clawhub.ai/{author}/{slug}"
+homepage = clawhub_url
 path = Path(__file__).with_name(slug)
 tag_list = [
   "latest",
@@ -105,7 +107,7 @@ def publish():
         str(path),
     ]
     run_cmd(cmd)
-    run_cmd(["git", "tag", f"dl-{version}"])
+    run_cmd(["git", "tag", f"{slug}-{version}"])
     run_cmd(["git", "push", "--tags"])
     print(homepage)
 
