@@ -5,7 +5,7 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.0.1'
+version = '0.0.2'
 name = "URL to PDF"
 description = "Convert URL to PDF suitable for mobile reading."
 author = "guoqiao"
