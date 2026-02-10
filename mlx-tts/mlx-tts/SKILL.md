@@ -52,7 +52,9 @@ Use the `message` tool to send the audio file to the user as an voice message:
 ```
 
 Example:
+
 User: "Say hello world"
+
 Agent:
 1. Runs `bash path/to/mlx-tts.sh "hello world"`
 2. Receives output: `/tmp/folder/audio.ogg`
