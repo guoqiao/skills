@@ -13,6 +13,8 @@ triggers:
 
 Given a url for a webpage, convert it to pdf suitable for mobile reading.
 
+See [examples](https://github.com/guoqiao/skills/tree/main/url2pdf/examples).
+
 ## Requirements
 
 - `uv`
