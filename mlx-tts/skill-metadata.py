@@ -5,9 +5,8 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.0.2'
+version = '0.0.3'
 name = "MLX TTS"
-description = "Text-To-Speech with MLX (Apple Silicon) and opensource models (default QWen3-TTS) locally."
 author = "guoqiao"
 slug = Path(__file__).parent.name
 github_url = f"https://github.com/{author}/skills/blob/main/{slug}/{slug}/SKILL.md"
@@ -85,13 +84,9 @@ def run_cmd(cmd: str | list):
 def show(verbose=False):
     json_fmt = json_pretty if verbose else json_1liner
     lines = [
-      "---",
-      f"name: {slug}",
-      f"description: {description}",
-      f"version: {version}",
-      f"author: {author}",
       f"metadata: {json_fmt(metadata)}",
-      "---",
+      f"github_url: {github_url}",
+      f"clawhub_url: {clawhub_url}",
     ]
     print("\n".join(lines))
 
