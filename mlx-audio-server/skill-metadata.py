@@ -5,10 +5,13 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.2.1'
+version = '0.2.2'
 name = "MLX Audio Server"
+author = "guoqiao"
 slug = Path(__file__).parent.name
-homepage = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
+github_url = f"https://github.com/{author}/skills/blob/main/{slug}/{slug}/SKILL.md"
+clawhub_url = f"https://clawhub.ai/{author}/{slug}"
+homepage = clawhub_url
 path = Path(__file__).with_name(slug)
 tag_list = [
   "latest",
@@ -83,10 +86,9 @@ def run_cmd(cmd: str | list):
 
 def show(verbose=False):
     json_fmt = json_pretty if verbose else json_1liner
-    homepage = metadata['openclaw']['homepage']
     print(f"\nmetadata: {json_fmt(metadata)}\n", )
-    print(f"\nhomepage: {homepage}\n")
-    print("\nimport: https://clawhub.ai/import\n")
+    print(f"\ngithub_url: {github_url}\n")
+    print(f"\nclawhub_url: {clawhub_url}\n")
 
 
 def publish():
@@ -99,7 +101,10 @@ def publish():
         "--tags", tags,
         str(path),
     ]
-    return run_cmd(cmd)
+    run_cmd(cmd)
+    run_cmd(["git", "tag", f"{slug}-{version}"])
+    run_cmd(["git", "push", "--tags"])
+    print(homepage)
 
 
 def main():
