@@ -5,15 +5,19 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '1.0.6'
+version = '1.0.7'
 name = "MLX STT"
+description = "Speech-To-Text with MLX (Apple Silicon) and opensource models (default GLM-ASR-Nano-2512) locally."
+author = "guoqiao"
 slug = Path(__file__).parent.name
-homepage = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
+github_url = f"https://github.com/{author}/skills/blob/main/{slug}/{slug}/SKILL.md"
+clawhub_url = f"https://clawhub.ai/{author}/{slug}"
+homepage = clawhub_url
 path = Path(__file__).with_name(slug)
 tag_list = [
   "latest",
   "asr", "stt", "speech-to-text", "audio",
-  "glm", "glm-asr", "glm-asr-nano-2512","glm-asr-nano-2512-8bit",
+  "glm", "glm-asr", "glm-asr-nano-2512", "glm-asr-nano-2512-8bit",
   "macOS", "MacBook", "Mac mini", "Apple Silicon",
   "mlx", "mlx-audio",
 ]
@@ -81,10 +85,16 @@ def run_cmd(cmd: str | list):
 
 def show(verbose=False):
     json_fmt = json_pretty if verbose else json_1liner
-    homepage = metadata['openclaw']['homepage']
-    print(f"\nmetadata: {json_fmt(metadata)}\n", )
-    print(f"\nhomepage: {homepage}\n")
-    print("\nimport: https://clawhub.ai/import\n")
+    lines = [
+      "---",
+      f"name: {slug}",
+      f"description: {description}",
+      f"version: {version}",
+      f"author: {author}",
+      f"metadata: {json_fmt(metadata)}",
+      "---",
+    ]
+    print("\n".join(lines))
 
 
 def publish():
@@ -97,7 +107,10 @@ def publish():
         "--tags", tags,
         str(path),
     ]
-    return run_cmd(cmd)
+    run_cmd(cmd)
+    run_cmd(["git", "tag", f"{slug}-{version}"])
+    run_cmd(["git", "push", "--tags"])
+    print(homepage)
 
 
 def main():
