@@ -3,7 +3,7 @@
 set -ue
 
 # install uv if not exists
-command -v uv > /dev/null 2>&1 || brew install uv || (curl -LsSf https://astral.sh/uv/install.sh | sh)
+command -v uv > /dev/null 2>&1 || brew install uv
 
 UV_PROJECT=$HOME/.uv-global
 UV_ENV_FILE=${UV_PROJECT}/.env
