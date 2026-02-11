@@ -2,7 +2,7 @@
 name: dl
 description: Download Video/Music from YouTube/Bilibili/X/etc.
 author: guoqiao
-metadata: {"openclaw":{"always":true,"emoji":"🦞","homepage":"https://clawhub.ai/guoqiao/dl","os":["darwin","linux","win32"],"requires":{"bins":["uv"]}}}
+metadata: {"openclaw":{"always":false,"emoji":"🦞","homepage":"https://clawhub.ai/guoqiao/dl","os":["darwin","linux","win32"],"requires":{"bins":["uv"]}}}
 triggers:
 - "/dl <url>"
 - "Download this video ..."
@@ -13,8 +13,8 @@ triggers:
 
 Smartly download media (Video/Music) from URLs (YouTube, Bilibili, X, etc.) to the appropriate local folders.
 
-- **Video:** Saves `mp4` to `~/Movies/` or `~/Videos/`.
-- **Music:** Saves `m4a` to `~/Music/`.
+- **Video:** Save into `~/Movies/` or `~/Videos/`.
+- **Music:** Save into `~/Music/`.
 - **Playlists:** Saves items into a subdirectory (e.g., `~/Music/<playlist_name>/`).
 
 Designed to work with a local Media Server (e.g., Universal Media Server, Jellyfin) for instant playback on TV/devices.
