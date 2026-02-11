@@ -266,11 +266,10 @@ class Downloader:
         return self.detect_kind(info)
 
     def get_cookie_file(self):
+        # pass cookie to yt-dlp if provided
         candidates = [
             os.getenv("DL_COOKIE_FILE"),
             os.getenv("COOKIE_FILE"),
-            "~/.cookies.txt",
-            "~/.cookie.txt",
             HERE / ".cookies.txt",
             HERE / ".cookie.txt",
         ]
