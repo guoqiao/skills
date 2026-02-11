@@ -58,6 +58,13 @@ uv run --script ${baseDir}/dl.py <url> -o <out_dir>
 ```
 The script will print output path, either a file or a folder.
 
+A optional cookie file could be provided to make yt-dlp more reliable, with which ever of these detected first:
+
+- `${baseDir}/.cookies.txt`
+- `$DL_COOKIES_FILE`
+- `$COOKIES_FILE`
+- `~/.cookies.txt`
+
 ## Setup (User)
 
 This skill will be much more useful if you setup a media server on same machine to share the downloaded media in your LAN:

@@ -265,13 +265,13 @@ class Downloader:
             return MediaKind.VIDEO
         return self.detect_kind(info)
 
-    def get_cookie_file(self):
+    def get_cookies_file(self):
         # pass cookie to yt-dlp if provided
         candidates = [
-            os.getenv("DL_COOKIE_FILE"),
-            os.getenv("COOKIE_FILE"),
             HERE / ".cookies.txt",
-            HERE / ".cookie.txt",
+            os.getenv("DL_COOKIES_FILE"),
+            os.getenv("COOKIES_FILE"),
+            "~/.cookies.txt",
         ]
         return get_dir(candidates, default=None)
 
@@ -289,7 +289,7 @@ class Downloader:
             "concurrent_fragment_downloads": 4,
             "retries": 3,
         }
-        cookie_file = self.get_cookie_file()
+        cookie_file = self.get_cookies_file()
         if cookie_file:
             options["cookiefile"] = str(cookie_file)
         if self.verbose:
