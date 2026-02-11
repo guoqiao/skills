@@ -5,7 +5,7 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.1.1'
+version = '0.1.2'
 name = "Media Downloader"
 description = "Download Video/Music from YouTube/Bilibili/X/etc."
 slug = Path(__file__).parent.name

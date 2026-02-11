@@ -132,9 +132,9 @@ def probe(args) -> DownloadPlan:
 
     kind = detect_kind(info, url)
     if kind is MediaKind.MUSIC:
-        target_dir = args.music_dir
+        target_dir = MUSIC_DIR
     else:
-        target_dir = args.video_dir
+        target_dir = VIDEO_DIR
     return DownloadPlan(
         id=info.get("id"),
         url=info.get("webpage_url", url),
@@ -145,7 +145,7 @@ def probe(args) -> DownloadPlan:
     )
 
 
-def build_options(plan: DownloadPlan) -> dict[str, Any]:
+def build_options(plan: DownloadPlan, verbose: bool = False) -> dict[str, Any]:
     outtmpl = (
         "%(playlist_title)s/%(title).240B.%(ext)s"
         if plan.is_playlist
@@ -186,6 +186,12 @@ def build_options(plan: DownloadPlan) -> dict[str, Any]:
     if opts["max_downloads"] is None:
         opts.pop("max_downloads")
 
+    if verbose:
+        opts["verbose"] = True
+    else:
+        opts["quiet"] = True
+        opts["no_warnings"] = True
+
     return opts
 
 
@@ -203,9 +209,8 @@ def print_plan(plan: DownloadPlan) -> None:
     print("\n".join(lines))
 
 
-def download(plan: DownloadPlan) -> None:
-    opts = build_options(plan)
-    print_plan(plan)
+def download(plan: DownloadPlan, verbose: bool = False) -> None:
+    opts = build_options(plan, verbose=verbose)
     with yt_dlp.YoutubeDL(opts) as ydl:
         ydl.download([plan.url])
 
@@ -236,7 +241,7 @@ def main() -> None:
         return
 
     try:
-        download(plan)
+        download(plan, verbose=args.verbose)
     except yt_dlp.utils.DownloadError as exc:  # type: ignore[attr-defined]
         raise SystemExit(str(exc)) from exc
 
