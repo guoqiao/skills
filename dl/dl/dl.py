@@ -6,18 +6,6 @@
 # ]
 # ///
 
-"""Smart Media Downloader.
-
-Tips:
-- `%(title).240B`: limite filename to 240 chars in output template, to avoid `file name too long` errors.
-- `--max-filesize=2000M`: limit single file max size to 2G, to avoid huge file download.
-- `--max-downloads=30`: limit max playlist item to 30, to avoid huage list download.
-- `--no-playlist`: avoid downloading playlist unexpectedly for single item url like `https://www.youtube.com/watch?v=UVCa8...&list=PL...`
-- macOS defaults `~/Movies` and `~/Music` are used here.
-- `uvx yt-dlp@latest` will ensure `yt-dlp` is always up to date.
-- `yt-dlp` will be blocked quickly if the host machine is in Cloud/DataCenter, use a residential IP if you can.
-"""
-
 import argparse
 import json
 import os
@@ -235,32 +223,6 @@ def cli():
     parser.add_argument(
         "-n", "--dry-run", action="store_true",
         help="Probe and print the plan without downloading",
-    )
-    parser.add_argument(
-        "-m", "--music", action="store_true",
-        help="Download best quality audio from url",
-    )
-    parser.add_argument(
-        "-a", "--audio", action="store_true",
-        help="Download decent quality audio from url",
-    )
-    parser.add_argument(
-        "-s", "--subtitle", action="store_true",
-        help="Download subtitle from url",
-    )
-    parser.add_argument(
-        "-f", "--format",
-        help="yt-dlp format string",
-    )
-    parser.add_argument(
-        "-M", "--music_dir",
-        default=MUSIC_DIR,
-        help="Music directory",
-    )
-    parser.add_argument(
-        "-V", "--video_dir",
-        default=VIDEO_DIR,
-        help="Video directory",
     )
     return parser.parse_args()
 
