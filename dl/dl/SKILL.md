@@ -46,13 +46,17 @@ When the user provides a URL or asks to download media, **you MUST follow this e
      }
      ```
 
-## Usage (Manual)
+## Usage
 
 Run the python script directly:
 ```bash
+# save into default dirs ~/Music or ~/Movies or ~/Videos
 uv run --script ${baseDir}/dl.py <url>
+
+# specify your own output dir
+uv run --script ${baseDir}/dl.py <url> -o <out_dir>
 ```
-The script auto-detects Video vs Music and Single vs Playlist.
+The script will print output path, either a file or a folder.
 
 ## Setup (User)
 
