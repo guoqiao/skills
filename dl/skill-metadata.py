@@ -5,7 +5,7 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.2.0'
+version = '0.2.1'
 name = "Media Downloader"
 description = "Download Video/Music from YouTube/Bilibili/X/etc."
 slug = Path(__file__).parent.name
@@ -26,7 +26,7 @@ tags = ','.join(tag_list)
 # https://docs.openclaw.ai/tools/skills#gating-load-time-filters
 metadata = {
   "openclaw": {
-    "always": True,  # always include the skill (skip other gates)
+    "always": False,  # always include the skill (skip other gates)
     "emoji": "🦞",  # optional emoji used by the macOS Skills UI
     "homepage": homepage,  # optional URL
     "os": ["darwin", "linux", "win32"],
