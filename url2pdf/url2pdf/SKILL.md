@@ -2,7 +2,7 @@
 name: url2pdf
 description: Convert URL to PDF suitable for mobile reading.
 author: guoqiao
-metadata: {"openclaw":{"always":true,"emoji":"🦞","homepage":"https://clawhub.ai/guoqiao/url2pdf","os":["darwin","linux","win32"],"requires":{"bins":["uv"]}}}
+metadata: {"openclaw":{"always":false,"emoji":"🦞","homepage":"https://clawhub.ai/guoqiao/url2pdf","os":["darwin","linux","win32"],"requires":{"bins":["uv"]}}}
 triggers:
 - "/url2pdf <url>"
 - "Save this url as pdf"
