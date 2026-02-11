@@ -268,6 +268,7 @@ class Downloader:
     def get_cookies_file(self):
         # pass cookie to yt-dlp if provided
         candidates = [
+            self.args.cookies_file,
             HERE / ".cookies.txt",
             os.getenv("DL_COOKIES_FILE"),
             os.getenv("COOKIES_FILE"),
@@ -335,19 +336,23 @@ def cli():
     )
     parser.add_argument(
         "-n", "--dry-run", action="store_true",
-        help="Probe and print the plan without downloading",
+        help="Build download options without downloading",
+    )
+    parser.add_argument(
+        "--cookies_file",
+        help="Path to cookies file for yt-dlp",
     )
     parser.add_argument(
         "-o", "--out_dir",
-        help="Output directory",
+        help="Final output directory",
     )
     parser.add_argument(
         "-M", "--music", action="store_true",
-        help="Download Music",
+        help="Download Music from url",
     )
     parser.add_argument(
         "-V", "--video", action="store_true",
-        help="Download Video",
+        help="Download Video from url",
     )
     return parser.parse_args()
 
