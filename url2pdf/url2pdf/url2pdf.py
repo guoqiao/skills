@@ -73,11 +73,10 @@ class iPhone13Pro:
         )
 
     def save_as_pdf(self, page, pdf_path, scale=1.1):
-        height = self.height
         return page.pdf(
             path=pdf_path,
             width=f'{self.width}px',
-            height=f'{height}px',
+            height=f'{self.height}px',
             print_background=True,
             scale=scale,
             margin={'top': '0px', 'bottom': '0px', 'left': '0px', 'right': '0px'}
