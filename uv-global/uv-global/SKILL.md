@@ -19,7 +19,7 @@ Use this skill when the user needs Python packages (data processing, scraping, e
 ## Installation
 
 ```bash
-bash ${baseDir}/uv-global.sh
+bash ${baseDir}/install.sh
 ```
 
 The script will:
