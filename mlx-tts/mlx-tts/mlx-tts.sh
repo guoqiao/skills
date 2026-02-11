@@ -1,10 +1,12 @@
 #!/bin/bash
 
 text=${1:-"Hello, Human!"}
+# required by VoiceDesign models
+instruct=${2:-"Be nice"}
 model=mlx-community/Qwen3-TTS-12Hz-1.7B-VoiceDesign-bf16
 outdir="$(mktemp -d)"
 mlx_audio.tts.generate \
-  --instruct="Be nice" \
+  --instruct="${instruct}" \
   --output_path="${outdir}" \
   --file_prefix="audio" \
   --audio_format="wav" \
