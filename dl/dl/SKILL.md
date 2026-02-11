@@ -33,7 +33,7 @@ When the user provides a URL or asks to download media, **you MUST follow this e
      ```
 
 3. **Capture Path:**
-   - Read the script output. Look for the line: `Saved to: <filepath>`.
+   - Read the script output, a path will be printed to stdout at the end, points to either a single file or a folder contains the playlist items.
 
 4. **Upload (Telegram Only):**
    - If the user is on Telegram (check context or session) AND the file is audio (mp3/m4a):
@@ -58,7 +58,7 @@ uv run --script ${baseDir}/dl.py <url> -o <out_dir>
 ```
 The script will print output path, either a file or a folder.
 
-A optional cookie file could be provided to make yt-dlp more reliable, with which ever of these detected first:
+A optional cookies file could be provided to make yt-dlp more reliable, with which ever of these detected first:
 
 - `${baseDir}/.cookies.txt`
 - `$DL_COOKIES_FILE`
