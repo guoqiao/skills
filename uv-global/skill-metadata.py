@@ -1,19 +1,30 @@
 #!/usr/bin/env python
 import json
 import argparse
+import subprocess
+import shlex
 from pathlib import Path
 
-name = Path(__file__).parent.name
-homepage = f"https://github.com/guoqiao/skills/blob/main/{name}/{name}/SKILL.md"
+version = '0.1.2'
+name = "UV Global"
+author = "guoqiao"
+slug = Path(__file__).parent.name
+github_url = f"https://github.com/guoqiao/skills/blob/main/{slug}/{slug}/SKILL.md"
+clawhub_url = f"https://clawhub.ai/{author}/{slug}"
+homepage = clawhub_url
+path = Path(__file__).with_name(slug)
+tag_list = [
+  "latest", "python", "uv", "global", "venv",
+]
+tags = ','.join(tag_list)
 
 # https://docs.openclaw.ai/tools/skills#gating-load-time-filters
 metadata = {
   "openclaw": {
-    "always": True, # always include the skill (skip other gates)
-    "emoji": "🦞", # optional emoji used by the macOS Skills UI
-    "homepage": homepage, # optional URL
+    "always": True,  # always include the skill (skip other gates)
+    "emoji": "🦞",  # optional emoji used by the macOS Skills UI
+    "homepage": homepage,  # optional URL
     "os": ["darwin", "linux"],
-    "tags": ["python", "uv", "global", "venv"],
     "requires": {
       # each must exist in $PATH
       # "bins": [
@@ -49,21 +60,59 @@ def json_pretty(data):
 
 
 def json_1liner(data):
-  return json.dumps(data, ensure_ascii=False, separators=(',',':'))
+    return json.dumps(data, ensure_ascii=False, separators=(',', ':'))
+
+
+def run_cmd(cmd: str | list):
+    if isinstance(cmd, str):
+        cmdline = cmd
+        shell = True
+    else:
+        cmd = [str(arg) for arg in cmd if arg]
+        cmdline = shlex.join(cmd)
+        shell = False
+    print(f"running cmd: {cmdline}")
+    return subprocess.run(cmd, check=True, shell=shell)
+
+
+def show(verbose=False):
+    json_fmt = json_pretty if verbose else json_1liner
+    lines = [
+      f"metadata: {json_fmt(metadata)}",
+      f"github_url: {github_url}",
+      f"clawhub_url: {clawhub_url}",
+    ]
+    print("\n".join(lines))
+
+
+def publish():
+    cmd = [
+        "clawhub",
+        "publish",
+        "--slug", slug,
+        "--name", name,
+        "--version", version,
+        "--tags", tags,
+        str(path),
+    ]
+    run_cmd(cmd)
+    run_cmd(["git", "tag", f"{slug}-{version}"])
+    run_cmd(["git", "push"])
+    run_cmd(["git", "push", "--tags"])
+    print(homepage)
 
 
 def main():
-    parser = argparse.ArgumentParser(prog='Agent Skill Metadata Generator')
+    parser = argparse.ArgumentParser(prog='OpenClaw Skill Metadata Generator')
     parser.add_argument('-v', '--verbose', action='store_true')
+    parser.add_argument('-s', '--show', action='store_true')
+    parser.add_argument('-p', '--publish', action='store_true')
     args = parser.parse_args()
-    tags = metadata['openclaw']['tags']
-    homepage = metadata['openclaw']['homepage']
-    json_fmt = json_pretty if args.verbose else json_1liner
-    print(f"\nmetadata: {json_fmt(metadata)}\n", )
-    print(f"\ntags: {','.join(tags)}\n")
-    print(f"\nhomepage: {homepage}\n")
+    if args.show:
+        show(verbose=args.verbose)
+    elif args.publish:
+        publish()
 
 
 if __name__ == "__main__":
     main()
-
