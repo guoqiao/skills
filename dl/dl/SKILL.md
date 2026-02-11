@@ -48,7 +48,7 @@ When the user provides a URL or asks to download media, **you MUST follow this e
 
 ## Usage
 
-Run the python script directly:
+Run `dl.py` as a uv script:
 ```bash
 # save into default dirs ~/Music or ~/Movies or ~/Videos
 uv run --script ${baseDir}/dl.py <url>
