@@ -33,12 +33,12 @@ The script will:
 ## Usage
 
 ```bash
-bash url2png.sh <url>
+bash ${baseDir}/url2png.sh "${url}"
 ```
-Generate png will be saved to a tmp dir, the script will print its path to stdout.
+Path to png will be printed to stdout.
 
 ## Agent Instructions
 
-1. Execute the `url2png.sh` script.
-2. Locate the generated PNG file according to script output.
+1. Execute the `url2png.sh` script with url as an argument.
+2. The script will output a path to a png file.
 3. Send the file to the user. **Crucial:** To avoid compression or dimension limits (especially on Telegram), send the image as a **document/file**, do not send as a photo.
