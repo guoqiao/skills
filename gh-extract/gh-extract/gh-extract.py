@@ -5,7 +5,6 @@
 #     "furl>=2.1.4",
 #     "loguru>=0.7.3",
 #     "requests>=2.32.5",
-#     "trafilatura>=2.0.0",
 #     "urllib3>=2.6.3",
 # ]
 # ///
