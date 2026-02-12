@@ -4,7 +4,7 @@ set -ue -o pipefail
 
 url="${1:-https://simonwillison.net/2026/Feb/10/showboat-and-rodney}"
 
-outdir=$(mktemp -d)
+outdir=${2:-$(mktemp -d)}
 mkdir -p ${outdir}
 # cd into outdir, let shot-scraper save with proper name
 cd ${outdir}
