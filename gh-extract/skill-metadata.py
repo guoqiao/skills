@@ -34,6 +34,7 @@ metadata = {
       # each must exist in $PATH
       "bins": [
         "uv",
+        "wget",
       ],
       # at list one must exist in $PATH
       # "anyBins": [

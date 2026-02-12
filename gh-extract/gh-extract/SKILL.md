@@ -22,11 +22,8 @@ Use this skill when the user types `/gh-extract` or asks to extract/summarize a 
 
 ## Requirements
 
-- `uv` installed and in PATH.
-
-## Install
-
-`uv` will install deps automatically when first run, no explicit installation needed.
+- `uv`
+- `wget`
 
 ## Usage
 

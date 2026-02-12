@@ -16,9 +16,7 @@ Given a GitHub url, convert to raw url, save to a file.
 """
 
 import argparse
-import html
 import json
-import re
 import sys
 import tempfile
 import subprocess
