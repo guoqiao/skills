@@ -33,7 +33,7 @@ metadata = {
     "requires": {
       # each must exist in $PATH
       "bins": [
-        "uv",
+        "uvx",
       ],
       # at list one must exist in $PATH
       # "anyBins": [

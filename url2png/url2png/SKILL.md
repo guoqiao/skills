@@ -17,7 +17,7 @@ See [examples](https://github.com/guoqiao/skills/tree/main/url2png/examples)
 
 ## Requirements
 
-- `uv`
+- `uvx`
 
 ## Installation
 
@@ -33,14 +33,12 @@ The script will:
 ## Usage
 
 ```bash
-# save to ~/Pictures with proper name by default
 bash url2png.sh <url>
-# specify output png path
-bash url2png.sh <url> path/to/png
 ```
+Generate png will be saved to a tmp dir, the script will print its path to stdout.
 
 ## Agent Instructions
 
 1. Execute the `url2png.sh` script.
-2. Locate the generated PNG file (default in `~/Pictures` if not specified).
-3. Send the file to the user. **Crucial:** To avoid compression or dimension limits (especially on Telegram), send the image as a **document/file** (or ZIP it), do not send as a photo.
+2. Locate the generated PNG file according to script output.
+3. Send the file to the user. **Crucial:** To avoid compression or dimension limits (especially on Telegram), send the image as a **document/file**, do not send as a photo.
