@@ -9,8 +9,10 @@ M:
 publish:
 	@uv run skill-metadata.py --publish
 
-run := uv run --script ${slug}/${slug}.py
-t:
+run := uv run --script ${slug}/gh_extract.py
+test:
 	${run} https://github.com/guoqiao/skills
 	${run} https://github.com/guoqiao/skills/tree/main/gh-extract/gh-extract
-	${run} https://github.com/guoqiao/skills/blob/main/gh-extract/gh-extract/SKILL.md
+	${run} https://github.com/guoqiao/skills/blob/main/gh-extract/gh-extract/SKILL.md -s
+
+t: test

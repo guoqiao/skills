@@ -8,17 +8,16 @@ triggers:
 - "Download this github file"
 ---
 
-# HackerNews Extract
+# GitHub Extract
 
 Extract content from a GitHub url.
 
-Use this skill when the user types `/gh-extract` or asks to extract/summarize a GitHub url.
+Use this skill when the user types `/gh-extract` or asks to extract/download/summarize a GitHub url.
 
 ## What it does
 - Accepts an GitHub url, could be repo/tree/blob.
 - Convert the url to github raw url.
-- Download the raw url and save to a temp path.
-- Print the path
+- Extract file content from the raw url or save to a temp path.
 
 ## Requirements
 
@@ -28,10 +27,14 @@ Use this skill when the user types `/gh-extract` or asks to extract/summarize a 
 ## Usage
 
 ```bash
-# run as uv script
-uv run --script ${baseDir}/gh-extract.py <url>
+# print file content to stdout
+uv run --script ${baseDir}/gh_extract.py <url>
+
+# save file to a temp path, with a proper filename
+uv run --script ${baseDir}/gh_extract.py <url> --save
 ```
-file will be saved into a tmp dir with proper name, full path will be printed to stdout.
 
 ## Notes
-- Only works for public repo.
+- only works for public repo.
+- url can be repo/tree/blob
+- for repo/tree, will try to get `README.md` or `SKILL.md` or `README.txt`

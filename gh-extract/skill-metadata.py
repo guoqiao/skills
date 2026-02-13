@@ -5,7 +5,7 @@ import subprocess
 import shlex
 from pathlib import Path
 
-version = '0.0.1'
+version = '0.0.2'
 name = "GitHub Extract"
 author = "guoqiao"
 slug = Path(__file__).parent.name
