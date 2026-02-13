@@ -10,7 +10,7 @@
 # ///
 
 """
-Convert a GitHub url to a raw url, extract content from it.
+Convert a GitHub url to a raw url, extract content from it or save to a file.
 """
 
 import argparse

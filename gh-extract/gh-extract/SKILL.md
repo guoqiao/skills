@@ -30,11 +30,11 @@ Use this skill when the user types `/gh-extract` or asks to extract/download/sum
 # print file content to stdout
 uv run --script ${baseDir}/gh_extract.py <url>
 
-# save file to a temp path, with a proper filename
+# save file to a temp path, with a proper filename, print the path to stdout
 uv run --script ${baseDir}/gh_extract.py <url> --save
 ```
 
 ## Notes
 - only works for public repo.
-- url can be repo/tree/blob
-- for repo/tree, will try to get `README.md` or `SKILL.md` or `README.txt`
+- url can be repo/tree/blob.
+- for repo/tree, will try to get `README.md` or `SKILL.md` or `README.txt`.
