@@ -1,7 +1,7 @@
 ---
 name: gh-extract
 description: Extract content from a GitHub url.
-metadata: {"openclaw":{"always":false,"emoji":"🦞","homepage":"https://clawhub.ai/guoqiao/gh-extract","os":["darwin","linux","win32"],"requires":{"bins":["uv"]}}}
+metadata: {"openclaw":{"always":false,"emoji":"🦞","homepage":"https://clawhub.ai/guoqiao/gh-extract","os":["darwin","linux","win32"],"requires":{"bins":["uv","wget"]}}}
 triggers:
 - "/gh-extract <url>"
 - "Extract content form this github url"
