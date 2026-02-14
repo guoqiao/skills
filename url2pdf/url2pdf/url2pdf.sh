@@ -13,10 +13,12 @@ unset UV_ENV_FILE
 # uvx --no-env-file shot-scraper install --browser chromium || true
 # create pdf for iPhone by default
 # height 844 - 74 to rm notch
+# print background is important, otherwise dark themed pages will become white and hard to read
 uvx --no-env-file shot-scraper pdf "${url}" \
     --width 390px \
     --height 770px \
-    --scale 1.2 \
+    --scale 1.1 \
+    --print-background \
     --wait 5000 \
     --timeout 30000 \
     --silent
