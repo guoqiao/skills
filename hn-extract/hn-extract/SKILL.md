@@ -35,7 +35,7 @@ Dependencies will be installed automatically by `uv` into to a dedicated venv wh
 ## Usage Workflow (Mandatory for Agents)
 
 When an agent is asked to extract a HackerNews post:
-1.  **Run the script** with an output path: `uv run --script ${baseDir}/hn-extract.py <input> -o /tmp/hn-<id>.md`.
+1.  **Run the script** with an output path: `uv run --script ${baseDir}/hn_extract.py <input> -o /tmp/hn-<id>.md`.
 2.  **Send ONE combined message:** Upload the file and ask the question in the *same* tool call. Use the `message` tool (`action=send`, `filePath="/tmp/hn-<id>.md"`, `message="Extraction complete. Do you want me to summarize it?"`).
 3.  **Do not** output the full text or a summary directly in the chat unless specifically requested.
 
@@ -43,11 +43,11 @@ When an agent is asked to extract a HackerNews post:
 
 ```bash
 # run as uv script
-uv run --script ${baseDir}/hn-extract.py <hn-id|hn-url> [-o path/to/output.md]
+uv run --script ${baseDir}/hn_extract.py <hn-id|hn-url> [-o path/to/output.md]
 
 # Examples
-uv run --script ${baseDir}/hn-extract.py 46861313 -o /tmp/output.md
-uv run --script ${baseDir}/hn-extract.py "https://news.ycombinator.com/item?id=46861313"
+uv run --script ${baseDir}/hn_extract.py 46861313 -o /tmp/output.md
+uv run --script ${baseDir}/hn_extract.py "https://news.ycombinator.com/item?id=46861313"
 ```
 
 - Omit `-o` to print to stdout.
