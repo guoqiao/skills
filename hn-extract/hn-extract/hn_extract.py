@@ -93,7 +93,6 @@ class HackerNewsExtractor:
         self.lines = []
         self.indent_char = ' ' * 4
         self.indent_level = 0
-        self.split_line = '\n' + '-' * 80
 
         self.article_html = ""
         self.article_text = ""
@@ -193,7 +192,6 @@ class HackerNewsExtractor:
         for paragraph in self.article_text.splitlines():
             self.add_paragraph(paragraph)
 
-        self.add_line(self.split_line)
         self.add_paragraph("## Comments")
         for child in children:
             # direct child indent at level 0
