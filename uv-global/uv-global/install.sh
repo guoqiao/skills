@@ -23,7 +23,7 @@ echo "add util packages"
 uv add --quiet \
     pip loguru python-dotenv humanize \
     arrow python-dateutil pytz \
-    requests httpx beautifulsoup4 aiofiles aiohttp  websocket-client websockets \
+    requests furl httpx beautifulsoup4 aiofiles aiohttp  websocket-client websockets \
     pillow yt-dlp web3 \
     python-markdown markitdown[all] telegramify-markdown trafilatura \
     openai anthropic google-genai
