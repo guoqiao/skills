@@ -21,7 +21,7 @@ uv init --quiet --name uv-global --python ${UV_PYTHON} . > /dev/null 2>&1 || tru
 # install some useful packages
 echo "add util packages"
 uv add --quiet \
-    loguru python-dotenv humanize \
+    pip loguru python-dotenv humanize \
     arrow python-dateutil pytz \
     requests httpx beautifulsoup4 aiofiles aiohttp  websocket-client websockets \
     pillow yt-dlp web3 \
