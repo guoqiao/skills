@@ -16,3 +16,31 @@ publish:
 
 undelete:
 	clawhub undelete ${slug}
+
+
+service := mlx-audio-server
+
+info:
+	brew services $@ ${service}
+
+run:
+	# run in foreground
+	brew services $@ ${service}
+
+start:
+	brew services $@ ${service}
+
+restart:
+	brew services $@ ${service}
+
+stop:
+	brew services $@ ${service}
+
+kill:
+	brew services $@ ${service}
+
+edit:
+	vim ~/Library/LaunchAgents/me.guoqiao.mlx-audio-server.plist
+
+tail:
+	tail -n50 -f /opt/homebrew/var/log/mlx-audio-server/server.log
