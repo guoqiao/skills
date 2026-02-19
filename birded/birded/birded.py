@@ -3,12 +3,16 @@ import os
 import json
 import sys
 import textwrap
+import subprocess
+import shlex
 from pathlib import Path
-
-from libs.sh import get_cmd_output
 
 # bird cli with auth
 CLI_PATH = Path(os.getenv("BIRD_CLI_PATH", "~/bin/birded")).expanduser().resolve()
+
+
+def log(*args, **kwargs):
+    print(*args, file=sys.stderr, **kwargs)
 
 
 def fmt_json(data) -> str:
@@ -18,6 +22,21 @@ def fmt_json(data) -> str:
 def tee_json(data, file=sys.stderr) -> str:
     print(fmt_json(data), file=file)
     return data
+
+
+def run_cmd(cmd, check=True, **kwargs):
+    cmd = [str(arg) for arg in cmd if arg]
+    cmdline = shlex.join(cmd)
+    log(f"running cmd: {cmdline}")
+    return subprocess.run(cmd, check=check, **kwargs)
+
+
+
+def get_cmd_output(cmd, fmt="txt", **kwargs):
+    output = run_cmd(cmd, check=True, capture_output=True, text=True, **kwargs).stdout.strip()
+    if fmt == "json":
+        return json.loads(output)
+    return output
 
 
 def get_tweet_text(tweet_id: str) -> str:
