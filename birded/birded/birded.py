@@ -72,7 +72,7 @@ def get_media_list(thread_json: list[str]) -> dict:
     if thread_json:
         if isinstance(thread_json, list):
             if len(thread_json) > 0:
-                return thread_json[0].get("media", [])
+                return thread_json[0].get("media") or []
 
 
 def get_video_url(thread_json: list[str]) -> str:
